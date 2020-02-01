@@ -13,6 +13,7 @@ We wanted to provide a way to streamline the process of annotation by allowing m
 * Create and delete datasets
 * See the annotations inside any dataset
 * List current information about datasets such as author, time of creation, description, number of annotations
+* Resume annotating with any existing dataset
 
 
 ## Technologies
