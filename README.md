@@ -38,7 +38,7 @@ coder_list = [{"name": "thomas", "port": 2111},
             {"name": "elaina", "port": 7217}]
 ```
 
-After configuration, fire up the terminal with this command! :heart_eyes_cat:
+After configuration, fire up the terminal with this command! :heart_eyes_cat: :100: :boom:
 ```
 gunicorn --bind <ip>:<port> --workers 4 main:app
 ```
