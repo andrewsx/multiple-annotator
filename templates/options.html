@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <title>Options</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <h1>Welcome {{greeting}}! </h1>
+        <h2>Current Datasets Information</h2>
+    
+        <form method='POST'>
+            <table class="table" id="description-table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>&nbsp</th>
+                        <th>Name of Dataset</th>
+                        <th>Size of Dataset</th>
+                        <th>Description</th>
+                        <th>Author</th>
+                        <th>Time Created</th>
+                    </tr>
+                </thead>
+                
+                {% for elem in lst %}
+                    {% set info_dataset = db.get_meta(elem) %}
+                    <tr>
+                        <td>
+                            <input value="{{elem}}" name="dataset_name" type="radio" checked/>
+                        </td>
+                        <td>{{elem}}</td>
+                        <td>{{db.get_dataset(elem) | length}}</td>
+                        <td>{{info_dataset['description']}}</td>
+                        <td>{{info_dataset['author']}}</td>
+                        <td>{{info_dataset['created']}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <input type='submit' class="btn btn-primary" name='action' value='Print' />
+
+            <input type='submit' class="btn btn-danger" name='action' value='Delete' />
+
+        </form>
+
+        <br/>
+        <br/>
+    
+        <!-- <h3>Print Dataset (Type in name of dataset)</h3>
+        <form method='POST'>
+            <select class="form-control col-sm-1" name="print">
+                {% for elem in lst %}
+                <option value = "{{elem}}">{{elem}}</option>
+                {% endfor %}
+            </select></br>
+            <input type='submit' class="btn btn-primary" name='action' value='Print' />
+        </form>
+        <br/>
+        <br/> -->
+    
+        <h3>Create Dataset</h3>
+        <form method='POST'>
+                <input type='text' name='create' placeholder='Input Dataset Name' />  
+                <input type='text' name='describe' placeholder='Description' />   
+                <input type='submit' class="btn btn-primary" name='action' value='Create' />            
+        </form>
+
+        <br/><br/>
+    
+        <!-- <h3>Delete Dataset</h3>
+    
+        <form method='POST'>
+            <select class="form-control col-sm-1" name="delete">
+                {% for elem in lst %}
+                <option value = "{{elem}}">{{elem}}</option>
+                {% endfor %}
+            </select></br>
+            <input type='submit' class="btn btn-danger" name='action' value='Delete' />
+        </form> -->
+
+        <br/><br/>
+    
+        <h3>Continue Annotating Existing Dataset</h3> 
+    
+        <form method='POST'>
+            <select class="form-control col-sm-1" name="continue">
+                {% for elem in lst %}
+                <option value = "{{elem}}">{{elem}}</option>
+                {% endfor %}
+            </select></br>
+            <select class="form-control col-sm-1" id = "myList" name="models">
+                <option value = "en_core_web_sm">en_core_web_sm</option>
+                <option value = "en_core_web_md">en_core_web_md</option>
+                <option value = "en_core_web_lg">en_core_web_lg</option>
+            </select></br>
+            <input type='text' name='input_data' id='user_input' placeholder='Input Dataset Name' /> 
+            </br>
+            <input type='text' name='labels' id='labels_input' placeholder='Label Names (separate by space)' /> 
+            </br>
+            <input type='submit' class="btn btn-success" name='action' value='Continue' />
+        </form>
+        
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- <script src="/static/options.js"></script> -->
+</html>
