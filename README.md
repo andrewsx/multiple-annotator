@@ -23,7 +23,7 @@ We wanted to provide a way to streamline the process of annotation by allowing m
 * Gunicorn
 
 ## Setup
-Make sure to modify the config.py to include the name of the users, a Flask key, and open ports for allocation to a user
+Make sure to modify the config.py to include the name of the users, a Flask key, and open ports for allocation to each user.
 
 For example: 
 ```python
@@ -38,7 +38,7 @@ coder_list = [{"name": "thomas", "port": 2111},
             {"name": "elaina", "port": 7217}]
 ```
 
-After configuration, fire up the terminal with this command!
+After configuration, fire up the terminal with this command! :heart_eyes_cat:
 ```
 gunicorn --bind <ip>:<port> --workers 4 main:app
 ```
