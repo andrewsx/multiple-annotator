@@ -38,11 +38,11 @@ def options(name):
             stripped_input = request.form['create'].strip()
             description = request.form['describe'].strip()
             print(stripped_input)
-            if stripped_input in db.datasets:  # check for duplicate dataset names
+            if stripped_input in db.datasets:  
                 return render_template("error.html", msg="User must not use a dataset name that already exists")
-            if stripped_input == "":  # check for empty dataset names
+            if stripped_input == "":  
                 return render_template("error.html", msg="User must provide non empty dataset name")
-            if ' ' in stripped_input or ',' in stripped_input:  #Dataset name can't include commas or whitespace
+            if ' ' in stripped_input or ',' in stripped_input:  
                 return render_template("error.html", msg="Dataset name can't include commas or whitespace")
             db.add_dataset(stripped_input, {"description" : description, "author" : name})
         elif request.form['action'] == 'Delete':
@@ -56,16 +56,16 @@ def options(name):
             
             dataset_name = request.form['continue']
             print('Dataset_name', dataset_name)
-            # also get info about spacy model size input here (drop down)
+            
             spacy_model = request.form.get("models", None)
             print('Spacy_model', spacy_model)
-            # get the user input dataset 
+            
         
             input_data = request.form['input_data'].strip()
             print('User_input', input_data)
             if input_data == '':
                 return render_template("error.html", msg="User must provide an input dataset")
-            # get the user labels (this should be a string separated by commas)
+            # user labels (this should be a string separated by commas)
             input_labels = request.form['labels'].strip()
             print('User_input', input_labels)
 
