@@ -17,10 +17,10 @@ We wanted to provide a way to streamline the process of annotation by allowing m
 
 
 ## Technologies
-* Python 3
-* Flask/Jinja
-* Prodigy
-* Gunicorn
+* Python 3.7.5
+* Flask 1.1.1/Jinja 2.10.3
+* Prodigy 1.8.5
+* Gunicorn 20.0.4
 
 ## Setup
 Make sure to modify the config.py to include the name of the users, a Flask key, and open ports for allocation to each user.
