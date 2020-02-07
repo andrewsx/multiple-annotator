@@ -7,7 +7,16 @@
     <body>
         <h1>Output for dataset {{ name }}</h1>
         {% for elem in lst %}
-            <h3>{{elem}}</h3>
+        {% set outer_loop = loop %}
+            {% for key, value in elem.items() %}
+                {% if key == 'text' %}
+                    <h2>{{key}}: {{ outer_loop.index }}</h2>
+                    <h4>{{value}}</h4>
+                {% else %}
+                    <h4>{{key}}: {{value}}</h4>
+                {% endif %}
+            {% endfor %}
+            <hr>
         {% endfor %}
     
     </body>
